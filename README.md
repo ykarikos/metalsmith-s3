@@ -28,11 +28,17 @@ var metalsmith = new Metalsmith(__dirname)
   ...
   .use(s3({
     action: 'write',
-    bucket: 's3-bucket-dest'
+    bucket: 's3-bucket-dest',
+    region: 'eu-west-1'
   }));
 ```
 
-# Actions
+# Actions and parameters
+
+## Common parameters
+
+region: The bucket's AWS region. The parameter is not mandatory but should be used when the S3 bucket is not in the US Standard region.
+
 ### Read
 
 The _read_ action will read files from an S3 bucket which can then be processed by plugins later in the chain. The _read_ action can be modified to ignore certain prefixes in the S3 bucket be setting the _ignore_ to a prefix, or an array of prefixes.
